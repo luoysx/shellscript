@@ -1,0 +1,32 @@
+#!/bin/bash
+## write by luoysx
+##检查root
+if [ $UID != 0 ]
+then
+   echo "you must be root"
+   exit 1
+fi
+##更换源并更新
+echo "deb http://114.80.173.169/ubuntu trusty main multiverse  restricted  universe" > /etc/apt/sources.list
+echo "deb http://114.80.173.169/ubuntu trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb http://114.80.173.169/ubuntu trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb http://admin:lamyue@123.56.69.69/ubuntu trusty xunyou" >> /etc/apt/sources.list
+apt-get update
+##安装smokeping
+apt-get -y install xunyou-init  --force-yes
+echo "classes:" > /etc/puppet.yaml
+echo "   xunyou::smokeping:" >> /etc/puppet.yaml
+cd /opt/xunyou/init/bin/
+/opt/xunyou/init/bin/run-puppet 0
+cd /etc/apache2
+cp mods-available/cgi* mods-enabled/
+service apache2 restart
+mkdir /var/www/html/smokeping
+cd /var/www/html/smokeping
+ln -s /var/cache/smokeping/images images
+touch /etc/smokeping/local.eth0
+touch /etc/smokeping/local.eth1
+touch /etc/smokeping/local.eth2
+touch /etc/smokeping/local.eth3
+touch /etc/smokeping/local.dr
+service smokeping restart
