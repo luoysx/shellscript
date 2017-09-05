@@ -30,4 +30,6 @@ touch /etc/smokeping/local.eth1
 touch /etc/smokeping/local.eth2
 touch /etc/smokeping/local.eth3
 touch /etc/smokeping/local.dr
+wget https://raw.githubusercontent.com/luoysx/shellscript/master/xunyou.smokeping.hwip
+cp xunyou.smokeping.hwip /etc/smokeping/local.dr 
 service smokeping restart
