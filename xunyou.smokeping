@@ -1,5 +1,6 @@
 #!/bin/bash
 ## write by luoysx
+## use on ubuntu 14.04 amd64
 ##检查root
 if [ $UID != 0 ]
 then
