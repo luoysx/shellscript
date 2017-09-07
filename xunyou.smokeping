@@ -17,6 +17,9 @@ apt-get update
 apt-get -y install xunyou-init  --force-yes
 echo "classes:" > /etc/puppet.yaml
 echo "   xunyou::smokeping:" >> /etc/puppet.yaml
+echo "   xunyou::ssh:" >> /etc/puppet.yaml
+echo "   xunyou::base:" >> /etc/puppet.yaml
+echo "   xunyou::proute:" >> /etc/puppet.yaml
 cd /opt/xunyou/init/bin/
 /opt/xunyou/init/bin/run-puppet 0
 cd /etc/apache2
