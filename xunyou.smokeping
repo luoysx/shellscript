@@ -1,6 +1,5 @@
 #!/bin/bash
 ## write by luoysx
-## use on ubuntu 14.04 amd64
 ##检查root
 if [ $UID != 0 ]
 then
@@ -8,6 +7,7 @@ then
    exit 1
 fi
 ##更换源并更新
+cd root
 echo "deb http://114.80.173.169/ubuntu trusty main multiverse  restricted  universe" > /etc/apt/sources.list
 echo "deb http://114.80.173.169/ubuntu trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
 echo "deb http://114.80.173.169/ubuntu trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
@@ -33,3 +33,7 @@ touch /etc/smokeping/local.dr
 wget https://raw.githubusercontent.com/luoysx/shellscript/master/xunyou.smokeping.hwip
 cp xunyou.smokeping.hwip /etc/smokeping/local.dr 
 service smokeping restart
+##如果有联通线路，添加路由
+#mtr 119.6.6.6 -a $1 -c 2 >> cugw.txt
+#cugw=`cat cugw.txt |grep '^ 1' |awk -F ' ' '{print $2}'`
+/opt/xunyou/init/bin/route.sh add $1 /opt/xunyou/init/git/puppet-data/global/route_table/route_cu
