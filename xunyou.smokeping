@@ -7,6 +7,7 @@ then
    exit 1
 fi
 ##更换源并更新
+export LC_ALL=en_US.UTF-8
 cd 
 echo "deb http://114.80.173.169/ubuntu trusty main multiverse  restricted  universe" > /etc/apt/sources.list
 echo "deb http://114.80.173.169/ubuntu trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
