@@ -1,6 +1,7 @@
 #!/bin/bash
+#write by luoysx
 . /etc/init.d/functions
-MD5PASS=(
+ran=(
 21029299
 00205d1c
 a3da1677
@@ -9,12 +10,12 @@ a3da1677
 )
 for ((n=0;n<=32767;n++))
 do
-for((i=0;i<${#MD5PASS[*]};i++))
+for((i=0;i<${#ran[*]};i++))
 do
         md5=`echo $n | md5sum|cut -c 1-8`
-        if [ $md5 == ${MD5PASS[$i]} ]
+        if [ $md5 == ${ran[$i]} ]
                 then
-                echo "$n" "${MD5PASS[$i]} "
+                echo "$n" "${ran[$i]} "
                 fi
 done
 done
