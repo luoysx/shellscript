@@ -12,8 +12,8 @@ fi
 cd /root
 ##替换yum源
 wget https://raw.githubusercontent.com/luoysx/shellscript/master/yum.txt
-cp -f /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-mv yum.txt /etc/yum.repos.d/CentOS-Base.repo
+cat /etc/yum.repos.d/CentOS-Base.repo > /etc/yum.repos.d/CentOS-Base.repo.bak
+cat yum.txt > /etc/yum.repos.d/CentOS-Base.repo
 yum install net-tools
 
 ##关闭放火墙
