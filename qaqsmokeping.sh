@@ -60,7 +60,7 @@ mv config.dist config
 cd
 
 ##apache修改
-sed -i 's#\/var\/www#\/usr\/local\/smokeping#g' /etc/httpd/conf/httpd.conf
+sed -i '1s#\/var\/www#\/usr\/local\/smokeping#g' /etc/httpd/conf/httpd.conf
 echo 'Alias /cache "/usr/local/smokeping/cache/"' >>/etc/httpd/conf.d/somekping.conf 
 echo 'Alias /cropper "/usr/local/smokeping/htdocs/cropper/"' >>/etc/httpd/conf.d/somekping.conf
 echo 'Alias /smokeping "/usr/local/smokeping/htdocs/smokeping.fcgi"' >>/etc/httpd/conf.d/somekping.conf
