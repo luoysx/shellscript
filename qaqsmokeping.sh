@@ -65,7 +65,7 @@ echo 'Alias /cache "/usr/local/smokeping/cache/"' >>/etc/httpd/conf.d/somekping.
 echo 'Alias /cropper "/usr/local/smokeping/htdocs/cropper/"' >>/etc/httpd/conf.d/somekping.conf
 echo 'Alias /smokeping "/usr/local/smokeping/htdocs/smokeping.fcgi"' >>/etc/httpd/conf.d/somekping.conf
 echo '<Directory "/usr/local/smokeping">' >>/etc/httpd/conf.d/somekping.conf
-echo 'AllowOverride None' >>/etc/httpd/conf.d/somekping.conf
+echo 'AllowOverride None' >>/etc/httpd/conf.d/somkeping.conf
 echo 'Options All' >>/etc/httpd/conf.d/somekping.conf
 echo 'AddHandler cgi-script .fcgi .cgi' >>/etc/httpd/conf.d/somekping.conf
 echo 'Order allow,deny' >>  /etc/httpd/conf.d/somekping.conf
