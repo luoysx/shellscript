@@ -40,7 +40,7 @@ cd
 
 ##安装fping
 wget https://raw.githubusercontent.com/luoysx/local/master/fping-3.10.tar.gz
-tar xf fping-3.10.tar.gz
+tar xvf fping-3.10.tar.gz
 cd fping-3.10
 ./configure
 make && make install
