@@ -84,6 +84,6 @@ cat testip.txt>>/usr/local/smokeping/etc/config
 sed -i -e  "/Presentation/a charset = utf-8" /usr/local/smokeping/etc/config
 yum -y install wqy-zenhei-fonts
 #sed -i -e "/'--end', $tasks[0][2],/a '--font TITLE:20""'" /usr/local/smokeping//lib/Smokeping/Graphs.pm
-sed -i 's/\/usr\/sbin/\/usr\/local\/sbin/g'
+sed -i 's/\/sbin\/fping/\/local\/sbin\/fping/g' /usr/local/smokeping/etc/config
 
 /usr/local/smokeping/bin/smokeping 
