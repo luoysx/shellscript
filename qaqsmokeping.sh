@@ -75,8 +75,8 @@ echo '</Directory>' >> /etc/httpd/conf.d/somekping.conf
 systemctl restart httpd
 
 ip=`ip addr |grep  'global eth0' |cut -d/ -f1|cut -d' ' -f6` 
-cat /usr/local/smokeping/etc/config|sed -i 's/some.url/$ip/g'
-cat /usr/local/smokeping/etc/config|sed -i 's/300/60/g'
+sed -i 's/some.url/'$ip'/g' /usr/local/smokeping/etc/config
+sed -i 's/300/60/g' /usr/local/smokeping/etc/config
 wget https://raw.githubusercontent.com/luoysx/shellscript/master/testip.txt
 cat testip.txt>>/usr/local/smokeping/etc/config
 
