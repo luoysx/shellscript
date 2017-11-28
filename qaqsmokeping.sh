@@ -26,7 +26,7 @@ ntpdate times.aliyun.com
  
 ##安装依赖
 yum groupinstall "Compatibility libraries" "Base" "Development tools" -y
-yum install -y perl perl-Net-Telnet perl-Net-DNS perl-LDAP perl-libwww-perl perl-IO-Socket-SSL perl-Socket6 perl-Time-HiRes perl-ExtUtils-MakeMaker rrdtool rrdtool-perl curl  httpd httpd-devel gcc make  wget libxml2-devel libpng-devel glib pango pango-devel freetype freetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl-CGI-SpeedyCGI perl-Sys-Syslog popt-devel libidn-devel fping
+yum install -y perl perl-Net-Telnet perl-Net-DNS perl-LDAP perl-libwww-perl perl-IO-Socket-SSL perl-Socket6 perl-Time-HiRes perl-ExtUtils-MakeMaker rrdtool rrdtool-perl curl  httpd httpd-devel gcc make  wget libxml2-devel libpng-devel glib pango pango-devel freetype freetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl-CGI-SpeedyCGI perl-Sys-Syslog popt-devel libidn-devel #fping
  
 ##安装smokeping
 wget https://raw.githubusercontent.com/luoysx/local/master/smokeping-2.6.9.tar.gz
