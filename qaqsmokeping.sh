@@ -81,6 +81,8 @@ sed -i 's/some.url/'$ip'/g' /usr/local/smokeping/etc/config
 sed -i 's/300/60/g' /usr/local/smokeping/etc/config
 wget https://raw.githubusercontent.com/luoysx/shellscript/master/xunyou.smokeping.hwip
 cat xunyou.smokeping.hwip>>/usr/local/smokeping/etc/config
+#wget https://raw.githubusercontent.com/luoysx/shellscript/master/testip.txt
+#cat testip.txt>>/usr/local/smokeping/etc/config
  
 ##修改字符集
 sed -i -e  "/Presentation/a charset = utf-8" /usr/local/smokeping/etc/config
