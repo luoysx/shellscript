@@ -14,7 +14,7 @@ cd /root
 wget https://raw.githubusercontent.com/luoysx/shellscript/master/yum.txt
 cat /etc/yum.repos.d/CentOS-Base.repo > /etc/yum.repos.d/CentOS-Base.repo.bak
 cat yum.txt > /etc/yum.repos.d/CentOS-Base.repo
-yum install net-tools
+yum install net-tools -y
  
 ##关闭放火墙
 setenforce 0
