@@ -1,0 +1,65 @@
+#!/bin/bash
+set -x
+modprobe ipip
+
+sip=${SIP}
+dip=""
+tun=${TUN:-tun}
+net=${NET:-172.16}
+mode="n"
+vp=0;
+ks=0;
+
+
+
+while getopts 's:d:t:n:x:v' opt ;do
+        case $opt in
+        x)
+        mode="x";;
+        s)
+        sip="$OPTARG";;
+        d)
+        dip="$OPTARG";;
+        t)
+        tun="$OPTARG";;
+        n)
+        net="$OPTARG";;
+        v)
+        vp=1;;
+        h)
+        echo -e "Useage: $0 -s sourceip -d destionation ip -t tunnel name -n net pre" ;;
+        *)
+        echo "error";;
+esac
+done
+nset()
+{
+ip addr |grep eth |grep inet|awk '{print $2}' |grep "^172.*.*.*" >/dev/null 2>&1 && { v=`ip addr |grep eth |grep inet|awk '{print $2}'|awk -F'[/]' '{print $1}'` ;}
+net=${NET:-10.9};
+[ -z "$v"  ] || { nsip=$v ; ip t l |grep $nsip |grep $dip >/dev/null 2>&1 && exit 1 ; }
+
+[ $1 -eq 1 ] &&{ tun=${TUN:-tunn}; net=${NET:-10.10}; }
+
+}
+
+ip t l |grep $sip |grep $dip  >/dev/null 2>&1 && exit 1;
+d=$(echo $dip|awk -F"." '{print $4}')
+ip t l |grep -v tunl0|awk '{print $1}' |sed 's/://g'|awk -F[_] '{print $3}' |grep ^$d$ >/dev/null 2>&1 && { tun=${TUN:-tunn} ; net=${NET:-172.18} ; ks=1; }
+
+[ $vp -eq 1 ] && { nset $ks $dip ;}
+
+[ $mode == "x" ]&&{ x=$sip;sip=$dip;dip=$x ;}
+[ "$sip" == "" ]&&{ echo "no sip" ;exit 1 ;}
+[ "$dip" == "" ]&&{ echo "no dip" ;exit 2 ;}
+
+
+s=$(echo $sip|awk -F"." '{print $4}')
+[ "$nsip" == "" ] ||{ sip=$nsip  ;}
+
+
+[ $s -eq $d ]&&exit 3
+
+
+ip t add ${tun}_${s}_$d mode ipip remote $dip local $sip
+ip l set ${tun}_${s}_$d up
+ip a add $net.$s.$d/32 peer $net.$d.$s dev ${tun}_${s}_$d
